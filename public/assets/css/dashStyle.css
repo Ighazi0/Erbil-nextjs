@@ -1,0 +1,36 @@
+/* Sidebar Customization */
+.navigation {
+  height: 100vh;
+  transition: width 0.5s;
+}
+
+.navigation.active {
+  width: 300px;
+}
+
+.navigation.collapsed {
+  width: 80px;
+}
+
+.navigation .nav-link {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.navigation .nav-link .ion-icon {
+  font-size: 1.5rem;
+}
+
+.main {
+  transition: margin-left 0.5s;
+}
+
+.main.collapsed {
+  margin-left: 80px;
+}
+
+.main.expanded {
+  margin-left: 300px;
+}
