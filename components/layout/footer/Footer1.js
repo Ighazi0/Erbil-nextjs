@@ -5,7 +5,7 @@ export default function Footer1() {
     const intl = useIntl();
     return (
         <>
-            <footer id="footer" className="clearfix bg-footer2 pd-t81 re-hi">
+            <footer id="footer" className="clearfix bg-primary pd-t81 re-hi">
                 <div className="themesflat-container">
                     <div className="row footer-main">
                         <div className="col-lg-3 col-md-4 col-12">
