@@ -71,10 +71,6 @@ export default function Footer1() {
                         </div>
                     </div>
                 </div>
-                <div className="mt-60">
-                    <img src="/assets/images/page/ft-left.png" alt="left" className="shape-left" />
-                    <img src="/assets/images/page/ft-right.png" alt="right" className="shape-right" />
-                </div>
             </footer>
 
         </>
