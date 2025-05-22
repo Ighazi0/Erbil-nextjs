@@ -5,9 +5,14 @@ export default function Footer1() {
     const intl = useIntl();
     return (
         <>
-            <footer id="footer" className="clearfix bg-primary pd-t81 re-hi">
+            <footer id="footer" className="clearfix bg-footer2 pd-t81 re-hi">
                 <div className="themesflat-container">
                     <div className="row footer-main">
+                        <div className="col-lg-3 col-md-4 col-12">
+                            <div className="widget widget-info">
+                                <img src="/assets/images/logo/eblpng.png" alt="Logo Footer" />
+                            </div>
+                        </div>
                         <div className="col-lg-3 col-md-4 col-12">
                             <div className="widget widget-menu pl-60">
                                 <h3><FormattedMessage id="rental" /></h3>
@@ -65,6 +70,10 @@ export default function Footer1() {
                             <p className="coppy-right">< FormattedMessage id="All Rights Reserved to Erbil Co.LTD © 2024." /></p>
                         </div>
                     </div>
+                </div>
+                <div className="mt-60">
+                    <img src="/assets/images/page/ft-left.png" alt="left" className="shape-left" />
+                    <img src="/assets/images/page/ft-right.png" alt="right" className="shape-right" />
                 </div>
             </footer>
 
