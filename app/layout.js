@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { DM_Sans, Plus_Jakarta_Sans } from "next/font/google";
 import { WhatsApp, Phone } from '@mui/icons-material';
 import { AuthProvider } from '@/contexts/AuthContext';
+import {GoogleTagManager, GoogleAnalytics} from "@next/third-parties/google";
 
 const jakarta = Plus_Jakarta_Sans({
   weight: ["300", "400", "500", "600", "700"],
@@ -59,10 +60,10 @@ export default function RootLayout({ children }) {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center'
-          }} href="https://wa.me/971557754102" target="_blank">
+          }} href="https://wa.me/91557754102" target="_blank">
             <WhatsApp sx={{ color: '#fff', fontSize: 30 }} />
           </a>
-          <a href="tel:+971557754102" style={{
+          <a href="tel:+91557754102" style={{
             height: '50%',
             display: 'flex',
             alignItems: 'center',
@@ -71,6 +72,12 @@ export default function RootLayout({ children }) {
             <Phone sx={{ color: '#fff', fontSize: 30 }} />
           </a>
         </div>
+        {/* <GoogleTagManager
+            gtmId={'AW-17045451706'}
+        /> */}
+        <GoogleAnalytics
+          gaId={'G-6B6G8HY79K'}
+        />
       </body>
     </html>
   );
