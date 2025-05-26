@@ -60,7 +60,7 @@ export default function RootLayout({ children }) {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center'
-          }} href="https://wa.me/91557754102" target="_blank">
+          }} href="https://wa.me/971557754102" target="_blank">
             <WhatsApp sx={{ color: '#fff', fontSize: 30 }} />
           </a>
           <a href="tel:+91557754102" style={{
