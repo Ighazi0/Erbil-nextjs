@@ -1,8 +1,8 @@
 import { db } from "../app/firebase";
-import {collection, doc, query, where, getDocs, getDoc, limit, getCountFromServer, or} from "firebase/firestore";
+import {collection, doc, query, where, getDocs, getDoc, limit, getCountFromServer, startAt, orderBy} from "firebase/firestore";
 
-export const getCars = async (selectedType = '', limitNumber = null, selectedLocation = '', search = '', numberOfDays=7, startDate=null, endDate=null) => {
-    let q = collection(db, "cars");
+export const getCars = async (selectedType = '', limitNumber = null, selectedLocation = '', search = '', numberOfDays=7, startDate=null, endDate=null, isNext=false, lastDoc=null) => {
+    let q = query(collection(db, "cars"), orderBy("createdAt", "desc"));
     if (selectedType) {
         q = query(q, where("type", "==", doc(db, "types", selectedType)))
     }
@@ -14,6 +14,9 @@ export const getCars = async (selectedType = '', limitNumber = null, selectedLoc
     }
     if (limitNumber) {
         q = query(q, limit(limitNumber))
+    }
+    if (isNext) {
+        q = query(q, startAt(lastDoc))
     }
     const querySnapshot = await getDocs(q);
 
