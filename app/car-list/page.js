@@ -44,7 +44,7 @@ export default function CarList() {
 
     const fetchData = async (isNext = false) => {
         setLoading(true)
-        const cars = await getCars(selectedType, 6, selectedLocation, search, numberOfDays, startDate, endDate, isNext, lastDoc)
+        const cars = await getCars(selectedType, 9, selectedLocation, search, numberOfDays, startDate, endDate, isNext, lastDoc)
         
         if (isNext) {
             setListing(prev => [...prev, ...cars]);
