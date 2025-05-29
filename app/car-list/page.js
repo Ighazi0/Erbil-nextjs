@@ -18,6 +18,9 @@ export default function CarList() {
     const [selectedType, setSelectedType] = useState(null)
     const [isToggled, setToggled] = useState(true)
     const [loading, setLoading] = useState(true)
+    const [isLastPage, setIsLastPage] = useState(false)
+    const [lastDoc, setLastDoc] = useState(null)
+    const [refreshTrigger, setRefreshTrigger] = useState(0);
     const { startDate, endDate, selectedLocation, setSelectedLocation, numberOfDays } = useContext(LanguageContext);
 
     const intl = useIntl();
@@ -39,14 +42,37 @@ export default function CarList() {
     }, [])
 
 
-    const fetchData = async () => {
+    const fetchData = async (isNext = false) => {
         setLoading(true)
-        setListing(await getCars(selectedType, null, selectedLocation, search, numberOfDays, startDate, endDate))
+        const cars = await getCars(selectedType, 6, selectedLocation, search, numberOfDays, startDate, endDate, isNext, lastDoc)
+        
+        if (isNext) {
+            setListing(prev => [...prev, ...cars]);
+        } else {
+            setListing(cars);
+        }
+        if (cars.length > 0) {
+            setLastDoc(cars[cars.length-1].createdAt);
+        }
+        if (cars.length < 6) {
+            setIsLastPage(true);
+        }
         setLoading(false)
     }
-    useEffect(()=>{
-        fetchData()
-    }, [search, selectedLocation, selectedType, numberOfDays, startDate, endDate])
+
+    useEffect(() => {
+        // Reset pagination
+        setLastDoc(null);
+        setIsLastPage(false);
+        setListing([]);
+
+        // Trigger fetch
+        setRefreshTrigger(prev => prev + 1);
+    }, [search, selectedLocation, selectedType, numberOfDays, startDate, endDate]);
+
+    useEffect(() => {
+        fetchData(false);
+    }, [refreshTrigger]);
 
     useEffect(() => {
         const getLocations = async () => {
@@ -153,7 +179,7 @@ export default function CarList() {
                                     <div className="tab-content" id="nav-listing-car">
                                         <div className="tab-pane fade show active">
                                             <div className="listing-list-car-grid ">
-                                                {loading ?
+                                                {(loading && !lastDoc) ?
                                                     [...Array(3)].map((_, index) => (
                                                         <div key={index} className="listing-grid-item">
                                                             <div className="listing-item-image">
@@ -173,8 +199,18 @@ export default function CarList() {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    )) :  listing.map((item) => ( <CardCard item={item} />))}
+                                                    )) : listing.length == 0 ? <h6 className="title-filter">
+                                                <FormattedMessage
+                                                    id={'noCars'}
+                                                    defaultMessage={'No cars available'}
+                                                />
+                                            </h6> : listing.map((item) => ( <CardCard item={item} />))}
                                             </div>
+                                            {!isLastPage && (
+                                                <button onClick={() => fetchData(true)} disabled={loading} className="my-3">
+                                                    {loading ? <FormattedMessage id={"loading"} defaultMessage={'Loading...'} /> : <FormattedMessage id={"loadMore"} defaultMessage={'Load More'} />}
+                                                </button>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
