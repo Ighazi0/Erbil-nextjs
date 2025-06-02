@@ -23,7 +23,7 @@ export const getCars = async (
   isNext = false,
   lastDoc = null
 ) => {
-  let q = query(collection(db, "cars"));
+  let q = query(collection(db, "cars"), orderBy("createdAt", "desc"));
 
   if (selectedType) {
     q = query(q, where("type", "==", doc(db, "types", selectedType)));
