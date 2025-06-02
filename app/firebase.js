@@ -5,13 +5,13 @@ import { getFirestore , enableIndexedDbPersistence } from "@firebase/firestore";
 import "firebase/storage";
 // Corrected storageBucket URL
 const firebaseConfig = {
-  apiKey: "AIzaSyC5Gt9j-MiaFRZFPrrzubANMthwtWhfnUA",
-  authDomain: "erbil-comma.firebaseapp.com",
-  projectId: "erbil-comma",
-  storageBucket: "erbil-comma.firebasestorage.app",
-  messagingSenderId: "436707362957",
-  appId: "1:436707362957:web:3f100c7f4f5c366324bac4",
-  measurementId: "G-CJY101YR3T"
+  apiKey: "AIzaSyAc70bPjm4H43-lFNE0337L9u3eGG6MSQ0",
+  authDomain: "erbilcarrentalnet.firebaseapp.com",
+  projectId: "erbilcarrentalnet",
+  storageBucket: "erbilcarrentalnet.firebasestorage.app",
+  messagingSenderId: "981983743725",
+  appId: "1:981983743725:web:610d86c1d80ecc00afc6e4",
+  measurementId: "G-46KX3GXKX3"
 };
 
 // Initialize Firebase
