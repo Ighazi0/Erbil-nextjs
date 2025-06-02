@@ -7,7 +7,6 @@ import {
   getDocs,
   getDoc,
   limit,
-  getCountFromServer,
   startAt,
   orderBy
 } from "firebase/firestore";
@@ -23,22 +22,29 @@ export const getCars = async (
   isNext = false,
   lastDoc = null
 ) => {
-  let q = query(collection(db, "cars"), orderBy("createdAt", "desc"));
+  let q = query(collection(db, "cars"));
 
   if (selectedType) {
     q = query(q, where("type", "==", doc(db, "types", selectedType)));
   }
+
   if (selectedLocation) {
     q = query(q, where("location", "==", doc(db, "locations", selectedLocation)));
   }
+
   if (search) {
     q = query(q, where("name", ">=", search), where("name", "<=", search + '\uf8ff'));
   }
+
+  // Pagination and sorting
+  q = query(q, orderBy("name")); // Ensure consistent ordering for pagination
+
+  if (isNext && lastDoc) {
+    q = query(q, orderBy("name"), startAt(lastDoc));
+  }
+
   if (limitNumber) {
     q = query(q, limit(limitNumber));
-  }
-  if (isNext && lastDoc) {
-    q = query(q, startAt(lastDoc));
   }
 
   const querySnapshot = await getDocs(q);
@@ -46,13 +52,6 @@ export const getCars = async (
     id: doc.id,
     ...doc.data(),
   }));
-
-  // Filter by availability if dates provided
-  if (startDate && endDate) {
-    const availabilityChecks = docs.map(doc => checkAvailability(doc.id, startDate, endDate));
-    const availabilityResults = await Promise.all(availabilityChecks);
-    docs = docs.filter((_, i) => availabilityResults[i]);
-  }
 
   // Collect unique type and location refs
   const uniqueTypeRefs = new Map();
@@ -87,13 +86,13 @@ export const getCars = async (
     location: car.location?.path ? locationMap.get(car.location.path) : null,
     image: car.images?.[0] || '',
     title: car.name,
-    price: car.price // You can uncomment and modify the rate logic if needed
+    price: car.price 
   }));
 
   return cars;
 };
 
-// Availability check function
+
 export const checkAvailability = async (id, startDate, endDate) => {
   const orderCollection = collection(db, "orders");
   const q = query(
