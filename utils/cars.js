@@ -38,7 +38,7 @@ export const getCars = async (
     q = query(q, limit(limitNumber));
   }
   if (isNext && lastDoc) {
-    q = query(q, startAt(lastDoc));
+    q = query(q, startAfter(lastDoc));
   }
 
   const querySnapshot = await getDocs(q);
