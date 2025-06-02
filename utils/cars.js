@@ -8,7 +8,7 @@ import {
   getDoc,
   limit,
   getCountFromServer,
-  startAt,
+  startAfter,
   orderBy
 } from "firebase/firestore";
 
