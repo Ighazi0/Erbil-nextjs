@@ -557,7 +557,7 @@ input[type=radio] + label:before {
 
 input[type=radio] {
   display: none !important;
-  *display: inline;
+  display: inline;
 }
 input[type=radio]:checked + label:after {
   content: "";
@@ -596,7 +596,7 @@ input[type=checkbox] + label:before {
 
 input[type=checkbox] {
   display: none !important;
-  *display: inline;
+  display: inline;
 }
 input[type=checkbox]:checked + label:after {
   content: "✔";
@@ -3137,15 +3137,6 @@ ul.social-icon li a i:hover {
   text-transform: capitalize;
 }
 
-/*------------ Slider form ---------------- */
-.tf-slide-form {
-  padding: 147px 0 193px 0;
-  background-image: url(./../images/page/bg4.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  animation: shrink 7s infinite alternate;
-}
 .tf-slide-form .slide-form > span {
   font-size: 16px;
   font-weight: 700;
@@ -3266,15 +3257,6 @@ ul.social-icon li a i:hover {
 }
 
 /*------------ Slider form V2---------------- */
-/*------------ Slider form V3---------------- */
-.tf-slider-v3 {
-  padding: 173px 0 297px 0;
-  background-image: url(./../images/page/bg6.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  position: relative;
-}
 .tf-slider-v3::before {
   content: "";
   top: 0;
@@ -3485,15 +3467,6 @@ ul.social-icon li a i:hover {
   transform: translateY(-3px);
 }
 
-/*------------ Page Title ---------------- */
-.tf-page-title .page-title {
-  padding: 144px 0;
-  background-image: url(./../images/page/page-title.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  animation: shrink 7s infinite alternate;
-}
 .tf-page-title .page-title span {
   font-size: 16px;
   font-weight: 600;
@@ -5757,15 +5730,6 @@ ul.social-icon li a i:hover {
 }
 
 /*------------ Widget Video ---------------- */
-/*------------ Widget browse-by-mode car ---------------- */
-.widget-browse-by-mode {
-  background-image: url(../images/page/bg1.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding-top: 124px;
-  padding-bottom: 122px;
-  position: relative;
-}
 .widget-browse-by-mode::before {
   content: "";
   background: rgba(2, 2, 3, 0.9);
@@ -5998,18 +5962,6 @@ ul.social-icon li a i:hover {
   font-family: var(--font-main-family);
 }
 
-/*------------ Widget feature v2 ---------------- */
-/*------------ Widget take-appointement ---------------- */
-.take-appointement {
-  background-image: url(../images/page/bg3.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 55px 46px 55px 113px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  gap: 45px;
-}
 .take-appointement .take-appointement-content {
   max-width: 445px;
   width: 100%;
@@ -6168,16 +6120,6 @@ ul.social-icon li a i:hover {
   border-radius: 100%;
   border: 12px solid #ffffff;
   box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.25);
-}
-
-/*------------ Widget testimonial-v2 ---------------- */
-/*------------ Widget best selling car ---------------- */
-.widget-best-selling-car {
-  padding-top: 135px;
-  padding-bottom: 154px;
-  background-image: url(../images/page/bg7.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .mybest-selling,
@@ -6353,18 +6295,7 @@ ul.social-icon li a i:hover {
   padding-top: 119px;
   padding-bottom: 103px;
 }
-.widget-tf-video .tf-video {
-  background-image: url(../images/page/video2.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 146px 0px 135px 0px;
-  border-radius: 18px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 52px;
-  align-items: center;
-}
+
 .widget-tf-video .tf-video .title-video {
   font-size: 50px;
   font-weight: 400;
@@ -6385,23 +6316,10 @@ ul.social-icon li a i:hover {
   margin-bottom: 20px;
 }
 
-/*------------ widget-new-cars ---------------- */
-/*------------ widget our ealers ---------------- */
 .widget-our-ealers {
   padding-bottom: 121px;
 }
 
-/*------------ widget our ealers ---------------- */
-/*------------ widget form buy car ---------------- */
-.widget-form-buy-car {
-  background-image: url(../images/page/bg5.jpg);
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 15px;
-  margin-bottom: 115px !important;
-}
 .widget-form-buy-car .form-buy-car-wrap {
   padding: 70px 0px;
   display: flex;

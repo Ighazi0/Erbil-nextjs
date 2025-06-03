@@ -2852,42 +2852,6 @@
     }
 }
 
-/*------------ Widget Video ---------------- */
-
-/*------------ Widget browse-by-mode car ---------------- */
-.widget-browse-by-mode {
-    background-image: url(../images/page/bg1.jpg), ;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding-top: 124px;
-    padding-bottom: 122px;
-    position: relative;
-
-    &::before {
-        content: '';
-        background: rgba(2, 2, 3, 0.90);
-        @include absolute;
-
-    }
-
-    & .browse-by-mode {
-        display: flex;
-        gap: 77px;
-
-        & .heading-section {
-            & .title {
-                color: $white;
-            }
-
-            & .description {
-                color: $line;
-            }
-        }
-    }
-
-}
-
-/*------------ Widget browse-by-mode car ---------------- */
 
 /*------------ Widget icon-box ---------------- */
 .widget-icon-box {

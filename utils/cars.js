@@ -9,14 +9,14 @@ import {
   limit,
   getCountFromServer,
   startAfter,
-  orderBy
+  orderBy,
 } from "firebase/firestore";
 
 export const getCars = async (
-  selectedType = '',
+  selectedType = "",
   limitNumber = null,
-  selectedLocation = '',
-  search = '',
+  selectedLocation = "",
+  search = "",
   numberOfDays = 7,
   startDate = null,
   endDate = null,
@@ -29,10 +29,17 @@ export const getCars = async (
     q = query(q, where("type", "==", doc(db, "types", selectedType)));
   }
   if (selectedLocation) {
-    q = query(q, where("location", "==", doc(db, "locations", selectedLocation)));
+    q = query(
+      q,
+      where("location", "==", doc(db, "locations", selectedLocation))
+    );
   }
   if (search) {
-    q = query(q, where("name", ">=", search), where("name", "<=", search + '\uf8ff'));
+    q = query(
+      q,
+      where("name", ">=", search),
+      where("name", "<=", search + "\uf8ff")
+    );
   }
   if (limitNumber) {
     q = query(q, limit(limitNumber));
@@ -42,58 +49,59 @@ export const getCars = async (
   }
 
   const querySnapshot = await getDocs(q);
-  let docs = querySnapshot.docs.map(doc => ({
+  let docs = querySnapshot.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
   }));
 
-  // Filter by availability if dates provided
   if (startDate && endDate) {
-    const availabilityChecks = docs.map(doc => checkAvailability(doc.id, startDate, endDate));
+    const availabilityChecks = docs.map((doc) =>
+      checkAvailability(doc.id, startDate, endDate)
+    );
     const availabilityResults = await Promise.all(availabilityChecks);
     docs = docs.filter((_, i) => availabilityResults[i]);
   }
 
-  // Collect unique type and location refs
   const uniqueTypeRefs = new Map();
   const uniqueLocationRefs = new Map();
 
-  docs.forEach(car => {
+  docs.forEach((car) => {
     if (car.type?.path) uniqueTypeRefs.set(car.type.path, car.type);
-    if (car.location?.path) uniqueLocationRefs.set(car.location.path, car.location);
+    if (car.location?.path)
+      uniqueLocationRefs.set(car.location.path, car.location);
   });
 
-  // Batch fetch types
-  const typePromises = Array.from(uniqueTypeRefs.values()).map(ref => getDoc(ref));
+  const typePromises = Array.from(uniqueTypeRefs.values()).map((ref) =>
+    getDoc(ref)
+  );
   const typeSnapshots = await Promise.all(typePromises);
   const typeMap = new Map();
-  typeSnapshots.forEach(snap => {
+  typeSnapshots.forEach((snap) => {
     if (snap.exists()) typeMap.set(snap.ref.path, snap.data());
   });
 
-  // Batch fetch locations
-  const locationPromises = Array.from(uniqueLocationRefs.values()).map(ref => getDoc(ref));
+  const locationPromises = Array.from(uniqueLocationRefs.values()).map((ref) =>
+    getDoc(ref)
+  );
   const locationSnapshots = await Promise.all(locationPromises);
   const locationMap = new Map();
-  locationSnapshots.forEach(snap => {
+  locationSnapshots.forEach((snap) => {
     if (snap.exists()) locationMap.set(snap.ref.path, snap.data());
   });
 
-  // Format final car data
-  const cars = docs.map(car => ({
+  const cars = docs.map((car) => ({
     ...car,
     id: car.id,
     type: car.type?.path ? typeMap.get(car.type.path) : null,
     location: car.location?.path ? locationMap.get(car.location.path) : null,
-    image: car.images?.[0] || '',
+    image: car.images?.[0] || "",
     title: car.name,
-    price: car.price // You can uncomment and modify the rate logic if needed
+    price: car.price,
   }));
 
   return cars;
 };
 
-// Availability check function
 export const checkAvailability = async (id, startDate, endDate) => {
   const orderCollection = collection(db, "orders");
   const q = query(
