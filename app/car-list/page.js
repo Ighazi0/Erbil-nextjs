@@ -111,7 +111,7 @@ export default function CarList() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollBottom =
-        window.innerHeight + window.scrollY >= document.body.offsetHeight - 500;
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 600;
 
       if (scrollBottom && !loading && !isLastPage) {
         fetchData(true);
