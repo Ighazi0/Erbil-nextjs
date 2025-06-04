@@ -23,6 +23,7 @@ export const getCars = async (
   isNext = false,
   lastDoc = null
 ) => {
+
   let q = query(collection(db, "cars"), orderBy("createdAt", "desc"));
 
   if (selectedType) {
@@ -62,38 +63,12 @@ export const getCars = async (
     docs = docs.filter((_, i) => availabilityResults[i]);
   }
 
-  const uniqueTypeRefs = new Map();
-  const uniqueLocationRefs = new Map();
-
-  docs.forEach((car) => {
-    if (car.type?.path) uniqueTypeRefs.set(car.type.path, car.type);
-    if (car.location?.path)
-      uniqueLocationRefs.set(car.location.path, car.location);
-  });
-
-  const typePromises = Array.from(uniqueTypeRefs.values()).map((ref) =>
-    getDoc(ref)
-  );
-  const typeSnapshots = await Promise.all(typePromises);
-  const typeMap = new Map();
-  typeSnapshots.forEach((snap) => {
-    if (snap.exists()) typeMap.set(snap.ref.path, snap.data());
-  });
-
-  const locationPromises = Array.from(uniqueLocationRefs.values()).map((ref) =>
-    getDoc(ref)
-  );
-  const locationSnapshots = await Promise.all(locationPromises);
-  const locationMap = new Map();
-  locationSnapshots.forEach((snap) => {
-    if (snap.exists()) locationMap.set(snap.ref.path, snap.data());
-  });
-
+  // Directly return the reference/path without fetching the document
   const cars = docs.map((car) => ({
     ...car,
     id: car.id,
-    type: car.type?.path ? typeMap.get(car.type.path) : null,
-    location: car.location?.path ? locationMap.get(car.location.path) : null,
+    type: car.type?.path || null,
+    location: car.location?.path || null,
     image: car.images?.[0] || "",
     title: car.name,
     price: car.price,
@@ -101,6 +76,7 @@ export const getCars = async (
 
   return cars;
 };
+
 
 export const checkAvailability = async (id, startDate, endDate) => {
   const orderCollection = collection(db, "orders");

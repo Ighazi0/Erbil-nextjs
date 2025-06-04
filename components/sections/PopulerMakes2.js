@@ -12,7 +12,7 @@ export default function PopulerMakes2() {
                             <h2 className="title wow fadeInUp">
                                 <FormattedMessage
                                     id={'recentlyAdded'}
-                                    defaultMessage={'Recently Added'}
+                                    defaultMessage={'qdqw'}
                                 />
                             </h2>
                         </div>

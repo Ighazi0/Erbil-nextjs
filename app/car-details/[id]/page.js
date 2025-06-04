@@ -6,23 +6,13 @@ import ThumbSlider from "@/components/slider/ThumbSlider";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import {
-  collection,
-  doc,
-  getDoc,
-  getDocs,
-  limit,
-  query,
-  setDoc,
-  where,
-} from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import CarCard from "@/components/elements/CarCard";
 import { getCars } from "@/utils/cars";
 import CarDetailsSkeleton from "@/app/components/skeletons/CarDetailsSkeleton";
 import ModalRentDuration from "@/app/components/elements/ModalRentDuration";
 import { LanguageContext } from "@/components/translation/translationLayout";
-import { useAuth } from "@/contexts/AuthContext";
 
 export default function ListingDetails({ params }) {
   const carId = params?.id;
@@ -35,7 +25,6 @@ export default function ListingDetails({ params }) {
   const [listing, setListing] = useState([]);
   const [showRentModal, setShowRentModal] = useState(false);
   const { numberOfDays, rate, code } = useContext(LanguageContext);
-  const { user } = useAuth();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,15 +32,6 @@ export default function ListingDetails({ params }) {
       const carData = q.data();
       carData["id"] = q.id;
 
-      if (carData?.location) {
-        const locationSnapshot = await getDoc(carData.location);
-        if (locationSnapshot.exists()) {
-          carData["location"] = {
-            name: locationSnapshot.data().name_en || "",
-            address: locationSnapshot.data().address || "",
-          };
-        }
-      }
       if (carData?.type) {
         const typeSnapshot = await getDoc(carData.type);
         if (typeSnapshot.exists()) {
@@ -72,9 +52,7 @@ export default function ListingDetails({ params }) {
       }
       carData["title"] = carData.name;
       carData["price"] = carData.price;
-      // carData['price'] = (((carData.price * (localStorage.getItem('rate') || 1)) || carData.price.toString()) * numberOfDays).toFixed(1) + ' ' + (localStorage.getItem('code') || "AED")
 
-      console.log("Processed car data:", carData);
       setCar(carData);
       setListing(await getCars("", 3, "", "", numberOfDays));
       setLoading(false);
@@ -111,28 +89,27 @@ export default function ListingDetails({ params }) {
           <div className="widget-property-detail">
             <div className="themesflat-container">
               <div className="row">
-                <div className="col-lg-12">
+                <div className="col-lg">
                   <div className="wrap-property-car flex">
                     <div className="box-1">
                       <div className="i-box-info flex align-items-center">
-                        <div className="info flex">
-                          <span>
-                            <FormattedMessage id="brand" />
-                            {`:`}
-                          </span>
-                          <span className="fw-4 mx-1"> {car.brand}</span>
+                        <div className="info flex flex-column align-items-start">
+                          {" "}
+                          <div className="title-heading">{car.name}</div>
+                          <div className="d-flex">
+                            <span>
+                              <FormattedMessage id="brand" />
+                              {`:`}
+                            </span>
+                            <span className="fw-4 mx-1">{car.brand}</span>
+                          </div>
+                          <div className="d-flex">
+                            <span>
+                              <FormattedMessage id="Model:" />
+                            </span>
+                            <span className="fw-4 mx-1">{car.model}</span>
+                          </div>
                         </div>
-                        <div className="info flex">
-                          <span>
-                            <FormattedMessage id="Model:" />
-                          </span>
-                          <span className="fw-4 mx-1">{car.model}</span>
-                        </div>
-                      </div>
-                      <div className="title-heading">{car.name}</div>
-                      <div className="text-address">
-                        <i className="icon-map-1-1" />
-                        <p>{car.location?.name}</p>
                       </div>
                     </div>
                     <div className="box-2 t-al-right">
@@ -161,12 +138,14 @@ export default function ListingDetails({ params }) {
               <div className="row">
                 <div className="col-md-10 col-12 mx-auto">
                   <div className="post-property">
-                    <div className="wrap-description wrap-style">
-                      <h4 className="title">
-                        <FormattedMessage id="Description" />
-                      </h4>
-                      <p>{car.description}</p>
-                    </div>
+                    {car.description && car.description.trim() !== "" && (
+                      <div className="wrap-description wrap-style">
+                        <h4 className="title">
+                          <FormattedMessage id="Description" />
+                        </h4>
+                        <p>{car.description}</p>
+                      </div>
+                    )}
                     <div className="wrap-car-overview wrap-style">
                       <h4 className="title">
                         <FormattedMessage id="Car Overview" />
