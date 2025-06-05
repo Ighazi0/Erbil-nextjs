@@ -46,7 +46,7 @@ export default function RootLayout({ children }) {
             right: 10,
             padding: 0,
             fontWeight: "bold",
-            width: "50px",
+            width: "40px",
             height: "150px",
             borderRadius: "5px 0px 0px 5px",
             fontSize: "25px",
