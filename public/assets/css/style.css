@@ -2226,8 +2226,8 @@ register .half .bg {
 }
 .footer-bottom .bottom-bar-menu {
   display: flex;
-  align-items: end;
-  justify-content: end;
+  align-items: flex-end;
+  justify-content: flex-end;
   gap: 35px;
 }
 .footer-bottom .bottom-bar-menu a {
@@ -2424,8 +2424,8 @@ register .half .bg {
 /*------------ Social Icon ---------------- */
 .icon-topbar {
   display: flex;
-  align-items: center;
-  justify-content: end;
+  align-items: flex-end;
+justify-content: flex-end;
   height: 100%;
 }
 .icon-topbar li:not(:first-child) {
@@ -3042,18 +3042,7 @@ ul.social-icon li a i:hover {
   color: rgba(255, 255, 255, 0.61);
   text-transform: capitalize;
 }
-.widget-tf-slider .slider-wrap .tf-slide-item .slide-item-content .slide-image .box-offer {
-  width: 113px;
-  height: 115px;
-  background-image: url(./../images/slide/offer.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 29px 26px 26px 23px;
-  position: absolute;
-  top: 19.5%;
-  bottom: 0;
-  left: 9%;
-}
+
 .widget-tf-slider .slider-wrap .tf-slide-item .slide-item-content .slide-image .box-offer p {
   font-size: 34px;
   font-weight: 700;
@@ -3557,15 +3546,6 @@ ul.social-icon li a i:hover {
   letter-spacing: 0.015em;
 }
 
-.text-box-blog {
-  padding: 38px 38px 33px 38px;
-  background-image: url(./../images/blog/quote.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  position: relative;
-  margin-bottom: 40px;
-}
 .text-box-blog:before {
   position: absolute;
   content: "";
@@ -5140,30 +5120,7 @@ ul.social-icon li a i:hover {
   transform: scale3d(1.1, 1.1, 1.1);
 }
 
-.car-bg-red {
-  background-image: url(../images/banner/bg2.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 60px 44px;
-  position: relative;
-}
 
-.car-bg-black {
-  background-image: url(../images/banner/bg1.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 60px 44px;
-  position: relative;
-}
-
-.car-banner-style2 {
-  background-image: url(../images/banner/bg4.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 40px 37px 75px 37px;
-  position: relative;
-  background-color: #000000;
-}
 .car-banner-style2 .group-content {
   max-width: 330px;
   width: 100%;
@@ -6190,24 +6147,12 @@ ul.social-icon li a i:hover {
   z-index: 1;
 }
 
-/*------------ Widget best selling car ---------------- */
 /*------------ Widget populer-makes ---------------- */
 .widget-populer-makes {
   padding-top: 135px;
   padding-bottom: 98px;
 }
 
-/*------------ Widget populer-makes ---------------- */
-/*------------ Widget mobie-app ---------------- */
-.mobie-app {
-  background-image: url(../images/banner/bg.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 109px 39px 92px 93px;
-  border-radius: 15px;
-  display: flex;
-  justify-content: space-between;
-}
 .mobie-app .mobie-app-content .sub-title {
   font-size: 16px;
   font-weight: 700;
@@ -6755,17 +6700,6 @@ a.mapboxgl-ctrl-logo {
   color: #000000;
 }
 
-/*------------------- Widget next-prev ----------------- */
-/*------------------- Widget add car ----------------- */
-.tf-video-car-banner {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url(../images/banner/bg-video-car.jpg);
-  padding: 166px 0px;
-  text-align: center;
-}
-
 .widget-video-car {
   display: inline-block;
 }
@@ -6924,13 +6858,6 @@ a.mapboxgl-ctrl-logo {
   text-transform: capitalize;
 }
 
-.banner-car-listing-list {
-  background-image: url(../images/banner/banner-list1.jpg);
-}
-
-.banner-car-listing-grid {
-  background-image: url(../images/banner/banner-list2.jpg);
-}
 
 .widget-car-listing-list {
   padding: 30px 0px;

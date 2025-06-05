@@ -219,39 +219,6 @@
 
                     }
 
-
-
-                    & .box-offer {
-                        width: 113px;
-                        height: 115px;
-                        background-image: url(./../images/slide/offer.png);
-                        background-repeat: no-repeat;
-                        background-size: cover;
-                        padding: 29px 26px 26px 23px;
-                        position: absolute;
-                        top: 19.5%;
-                        bottom: 0;
-                        left: 9%;
-
-                        & p {
-                            font-size: 34px;
-                            font-weight: 700;
-                            color: $white2;
-                            display: flex;
-                            align-items: flex-end;
-                            margin-bottom: 3px;
-                        }
-
-                        & span {
-                            font-size: 15px;
-                            font-weight: 600;
-                            line-height: 22px;
-                            color: $white2;
-                            text-transform: uppercase;
-                            text-align: center;
-                            display: block;
-                        }
-                    }
                 }
             }
 

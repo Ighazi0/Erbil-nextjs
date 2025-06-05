@@ -131,9 +131,9 @@ export default function Header1({ scroll, handleMobileMenu }) {
         }`}
       >
         <div className="header-lower">
-          <div className="themesflat-container w1700">
+          <div className="themesflat-container">
             <div className="row">
-              <div className="col-lg-12">
+              <div className="col-lg">
                 <div className="header-style2 inner-container flex justify-space align-center">
                   <div className="logo-box flex">
                     <div className="logo">

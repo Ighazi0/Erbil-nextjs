@@ -1,6 +1,6 @@
 "use client";
 import Layout from "@/components/layout/Layout";
-import { FormattedMessage , useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 export default function ContactUs() {
   const intl = useIntl();
   return (
@@ -31,12 +31,14 @@ export default function ContactUs() {
                           />
                         </svg>
                       </div>
-                      <a
-                        href="https://wa.me/91557754102"
-                        className=""
-                      >
-                        <div className="title">< FormattedMessage   id="Phone Number" /></div>
-                        <p className="des">+971 50 135 7705 | +971 52 539 6339 | +964 750 447 2923 | +964 750 445 7705</p>
+                      <a href="https://wa.me/91557754102" className="">
+                        <div className="title">
+                          <FormattedMessage id="Phone Number" />
+                        </div>
+                        <p className="des">
+                          +971 50 135 7705 | +971 52 539 6339 | +964 750 447
+                          2923 | +964 750 445 7705
+                        </p>
                       </a>
                     </div>
                   </div>
@@ -80,9 +82,12 @@ export default function ContactUs() {
                           </defs>
                         </svg>
                       </div>
-                      <div className="title">< FormattedMessage   id="Address line" /></div>
+                      <div className="title">
+                        <FormattedMessage id="Address line" />
+                      </div>
                       <p className="des display-4">
-                        Auto center | Enoc | 33 | Deira, Dubai | Behind Al Habtoor Motor
+                        Auto center | Enoc | 33 | Deira, Dubai | Behind Al
+                        Habtoor Motor
                       </p>
                     </div>
                   </div>

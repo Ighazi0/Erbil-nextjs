@@ -212,65 +212,6 @@
     }
 }
 
-.text-box-blog {
-    padding: 38px 38px 33px 38px;
-    background-image: url(./../images/blog/quote.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    position: relative;
-    margin-bottom: 40px;
-
-    &:before {
-        position: absolute;
-        content: "";
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background-color: $bg-quote;
-    }
-
-    &>p {
-        font-size: 24px;
-        font-weight: 700;
-        line-height: 43px;
-        color: $white;
-        position: relative;
-        margin-bottom: 22px;
-    }
-
-    & span {
-        line-height: 20.16px;
-        color: $white;
-        padding-left: 30px;
-        position: relative;
-
-        &::before {
-            position: absolute;
-            content: '';
-            width: 19px;
-            height: 2px;
-            background-color: $white;
-            left: 0;
-            top: 50%;
-            bottom: 50%;
-
-        }
-
-    }
-
-    & i {
-        position: absolute;
-        font-size: 30px;
-        color: $primary;
-        bottom: 15%;
-        right: 4.8%;
-    }
-
-
-}
-
 .post-wrap {
     & h3 {
         font-size: 28px;
@@ -2172,103 +2113,6 @@
     }
 }
 
-.car-bg-red {
-    background-image: url(../images/banner/bg2.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 60px 44px;
-    position: relative;
-}
-
-.car-bg-black {
-    background-image: url(../images/banner/bg1.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 60px 44px;
-    position: relative;
-}
-
-//style 02
-.car-banner-style2 {
-    background-image: url(../images/banner/bg4.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 40px 37px 75px 37px;
-    position: relative;
-    background-color: $black;
-
-    & .group-content {
-        max-width: 330px;
-        width: 100%;
-
-        & .sub-heading {
-            font-size: 16px;
-            font-weight: 700;
-            letter-spacing: 0.11em;
-            text-transform: uppercase;
-            color: $white;
-            position: relative;
-            display: inline-block;
-            margin-bottom: 15px;
-
-            &::after {
-                content: '';
-                width: 100%;
-                height: 1px;
-                background-color: $primary;
-                position: absolute;
-                bottom: 0px;
-                left: 0;
-            }
-        }
-
-        & .heading-car {
-            color: $white;
-            margin-bottom: 28px;
-        }
-
-        & .more-link {
-            color: $primary;
-        }
-    }
-
-    & .group-image {
-        position: absolute;
-        top: 19%;
-        right: 4%;
-
-        & .car {
-            position: absolute;
-            top: -28%;
-            right: -6%;
-            width: 344px;
-            -webkit-transition: all 1s cubic-bezier(0.3, 1, 0.35, 1) 0s;
-            transition: all 1s cubic-bezier(0.3, 1, 0.35, 1) 0s;
-            transition: transform 500ms ease;
-        }
-
-        & .car-red {
-            position: absolute;
-            bottom: -13%;
-            right: -11%;
-            width: 466px;
-            -webkit-transition: all 1s cubic-bezier(0.3, 1, 0.35, 1) 0s;
-            transition: all 1s cubic-bezier(0.3, 1, 0.35, 1) 0s;
-            transition: transform 500ms ease;
-        }
-    }
-
-    &:hover .group-image .car {
-        -webkit-transform: scale3d(1.05, 1.05, 1.05);
-        transform: scale3d(1.05, 1.05, 1.05);
-    }
-
-    &:hover .group-image .car-red {
-        -webkit-transform: scale3d(1.05, 1.05, 1.05);
-        transform: scale3d(1.05, 1.05, 1.05);
-    }
-}
-
 /*------------ Widget car banner ---------------- */
 
 /*------------ Widget Selling car ---------------- */
@@ -3398,77 +3242,12 @@
 
 }
 
-/*------------ Widget best selling car ---------------- */
 
 /*------------ Widget populer-makes ---------------- */
 .widget-populer-makes {
     padding-top: 135px;
     padding-bottom: 98px;
 }
-
-/*------------ Widget populer-makes ---------------- */
-
-/*------------ Widget mobie-app ---------------- */
-.mobie-app {
-    background-image: url(../images/banner/bg.png), ;
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 109px 39px 92px 93px;
-    border-radius: 15px;
-    display: flex;
-    justify-content: space-between;
-
-    & .mobie-app-content {
-        & .sub-title {
-            font-size: 16px;
-            font-weight: 700;
-            line-height: 30px;
-            letter-spacing: 0.11em;
-            color: $primary;
-            position: relative;
-            display: inline-block;
-            text-transform: uppercase;
-
-            &::before {
-                content: "";
-                position: absolute;
-                bottom: 2px;
-                right: 0;
-                left: 0;
-                height: 2px;
-                width: 100%;
-                background: rgba(208, 24, 24, 0.19);
-            }
-
-        }
-
-        & .title {
-            font-size: 44px;
-            font-weight: 700;
-            line-height: 60px;
-            color: $white;
-            text-transform: capitalize;
-            margin-bottom: -23px;
-        }
-
-        & .image-wrap {
-            display: flex;
-            align-items: flex-end;
-            gap: 22px;
-
-            & img {
-                width: auto;
-                height: auto;
-            }
-        }
-    }
-
-    & .mobie-app-image {
-        padding-top: 16px;
-    }
-}
-
-/*------------ Widget mobie-app ---------------- */
 
 /*------------ Widget search-car ---------------- */
 .widget-search-car {
@@ -4091,21 +3870,6 @@ a.mapboxgl-ctrl-logo {
     }
 }
 
-/*------------------- Widget next-prev ----------------- */
-
-
-/*------------------- Widget add car ----------------- */
-
-.tf-video-car-banner {
-    //   background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-image: url(../images/banner/bg-video-car.jpg);
-    padding: 166px 0px;
-    text-align: center;
-}
-
 .widget-video-car {
     display: inline-block;
 }
@@ -4296,14 +4060,6 @@ a.mapboxgl-ctrl-logo {
         text-transform: capitalize;
     }
 
-}
-
-.banner-car-listing-list {
-    background-image: url(../images/banner/banner-list1.jpg);
-}
-
-.banner-car-listing-grid {
-    background-image: url(../images/banner/banner-list2.jpg);
 }
 
 .widget-car-listing-list {
