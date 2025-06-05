@@ -251,7 +251,6 @@ export default function ListingDetails({ params }) {
                                 <span className="listing-info-title">
                                   <FormattedMessage id="Year:" />
                                 </span>
-                                <p className="listing-info-value">{car.year}</p>
                               </div>
                             </div>
                           </div>
