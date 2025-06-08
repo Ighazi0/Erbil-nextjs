@@ -157,14 +157,58 @@ export default function PopularMakesTab1() {
                         </li>
                       </ul>
                     </div>
-                    <div className="bottom-btn-wrap">
+                    <div className="bottom-btn-wrap py-3">
                       <div className="price-wrap">
                         <span className="price-sale">
                           {(car.price * rate).toFixed(1)} {code}
                         </span>
                       </div>
                     </div>
-                  </div>
+
+                    <div className="flex justify-center gap-3 mt-4 px-2">
+                      <a
+                        href={`https://wa.me/971557754102?text=${encodeURIComponent(
+                          `I'm interested in renting the car: ${car.name}`
+                        )}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="button-save-listing text-white d-flex align-items-center justify-content-center"
+                        style={{
+                          backgroundColor: "#25D366",
+                          textAlign: "center",
+                          padding: "10px 16px",
+                          borderRadius: "8px",
+                          width: "100px",
+                          height: "40px",
+                          textDecoration: "none",
+                          marginTop: "0px",
+                        }}
+                      >
+                        <FormattedMessage
+                          id="WhatsApp"
+                          defaultMessage="WhatsApp"
+                        />
+                      </a>
+                      <a
+                        href={`tel:+971557754102`}
+                        onClick={(e) => e.stopPropagation()}
+                        style={{
+                          backgroundColor: "#A88E70",
+                          textAlign: "center",
+                          padding: "10px 16px",
+                          borderRadius: "8px",
+                          width: "100px",
+                          height: "40px",
+                          textDecoration: "none",
+                          marginTop: "0px",
+                        }}
+                        className="flex-1 flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-xl shadow-md transition-all duration-200"
+                      >
+                        <i className="icon-phone text-lg" />
+                        Call Now
+                      </a>
+                    </div>
+                  </div>{" "}
                 </div>
               );
             })}

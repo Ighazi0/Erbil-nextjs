@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { DM_Sans, Plus_Jakarta_Sans } from "next/font/google";
 import { WhatsApp, Phone, LocationOn } from "@mui/icons-material";
 import { AuthProvider } from "@/contexts/AuthContext";
-import { GoogleTagManager, GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const jakarta = Plus_Jakarta_Sans({
   weight: ["300", "400", "500", "600", "700"],
