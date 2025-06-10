@@ -5,7 +5,6 @@ import {
   query,
   where,
   getDocs,
-  getDoc,
   limit,
   getCountFromServer,
   startAfter,
@@ -23,7 +22,6 @@ export const getCars = async (
   isNext = false,
   lastDoc = null
 ) => {
-
   let q = query(collection(db, "cars"), orderBy("createdAt", "desc"));
 
   if (selectedType) {
@@ -63,12 +61,9 @@ export const getCars = async (
     docs = docs.filter((_, i) => availabilityResults[i]);
   }
 
-  // Directly return the reference/path without fetching the document
   const cars = docs.map((car) => ({
     ...car,
     id: car.id,
-    type: car.type?.path || null,
-    location: car.location?.path || null,
     image: car.images?.[0] || "",
     title: car.name,
     price: car.price,
@@ -76,7 +71,6 @@ export const getCars = async (
 
   return cars;
 };
-
 
 export const checkAvailability = async (id, startDate, endDate) => {
   const orderCollection = collection(db, "orders");

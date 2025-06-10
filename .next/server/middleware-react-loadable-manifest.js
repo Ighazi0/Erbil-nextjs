@@ -1,1 +1,1 @@
-self.__REACT_LOADABLE_MANIFEST="{}"
+self.__REACT_LOADABLE_MANIFEST="{\"../app/login/page.js -> @/components/layout/Layout\":{\"id\":\"../app/login/page.js -> @/components/layout/Layout\",\"files\":[\"static/chunks/_app-pages-browser_components_layout_Layout_js.js\"]}}"
