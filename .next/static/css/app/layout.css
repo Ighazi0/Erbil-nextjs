@@ -5935,7 +5935,7 @@ ul.social-icon li a i:hover {
 /*------------ Widget Tab service ---------------- */
 /*------------ Widget Car Service ---------------- */
 .hover-listing-image {
-  min-height: 309px;
+  min-height: 200px;
   position: relative;
   z-index: 5;
 }
@@ -8433,7 +8433,7 @@ a.mapboxgl-ctrl-logo {
   position: relative;
 }
 .listing-grid-item .listing-item-image .hover-listing-image {
-  min-height: 212px;
+  min-height: 200px;
 }
 .listing-grid-item .listing-item-image .icon-favorite {
   position: absolute;
@@ -10905,7 +10905,7 @@ a.mapboxgl-ctrl-logo {
     max-width: 100%;
   }
   .listing-list-car-grid .listing-grid-item .listing-item-image .hover-listing-image {
-    min-height: 300px;
+    min-height: 200px;
   }
   .listing-list-car-grid.listing-list-car-list .listing-grid-item {
     flex-direction: column;

@@ -1,8 +1,5 @@
 {
-  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/page": "app/page.js",
-  "/admin/orders/page": "app/admin/orders/page.js",
-  "/admin/brands/page": "app/admin/brands/page.js",
-  "/admin/cars/form/[[...id]]/page": "app/admin/cars/form/[[...id]]/page.js",
-  "/admin/models/page": "app/admin/models/page.js"
+  "/car-list/page": "app/car-list/page.js",
+  "/car-details/[id]/page": "app/car-details/[id]/page.js"
 }

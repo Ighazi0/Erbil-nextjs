@@ -916,7 +916,6 @@
             margin-bottom: 27px;
             overflow: hidden;
             text-overflow: ellipsis;
-            -webkit-line-clamp: 1;
             display: -webkit-box;
             -webkit-box-orient: vertical;
 
@@ -1364,7 +1363,7 @@
 /*------------ Widget Car Service ---------------- */
 //image-hover
 .hover-listing-image {
-    min-height: 309px;
+    min-height: 200px;
     position: relative;
     z-index: 5;
 
@@ -4242,7 +4241,7 @@ a.mapboxgl-ctrl-logo {
         position: relative;
 
         & .hover-listing-image {
-            min-height: 212px;
+            min-height: 200px;
         }
 
         & .icon-favorite {

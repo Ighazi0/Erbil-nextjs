@@ -30,8 +30,10 @@ export default function SlideFormV2() {
 
   useEffect(() => {
     const updateItemsPerPage = () => {
-      if (window.innerWidth <= 768) {
+      if (window.innerWidth <= 600) {
         setItemsPerPage(1);
+      } else if (window.innerWidth <= 1024) {
+        setItemsPerPage(2);
       } else {
         setItemsPerPage(3);
       }
@@ -75,7 +77,7 @@ export default function SlideFormV2() {
 
                   <div className="horizontal-list">
                     {carsList.map((car) => (
-                      <CardCard key={car.id} item={car} />
+                      <CardCard key={car.id} item={car} offer={true} />
                     ))}
                   </div>
 
@@ -128,21 +130,34 @@ export default function SlideFormV2() {
           flex-direction: row;
           gap: 1rem;
           overflow: hidden;
+          width: 90%;
+          justify-content: center;
         }
 
-        .horizontal-item {
-          flex: 0 0 calc(33.33% - 0.67rem);
-          background-color: #fff;
-          border: 1px solid #ccc;
-          padding: 1rem;
-          border-radius: 0.5rem;
-          text-align: center;
-          box-sizing: border-box;
+        /* Desktop - 3 items */
+        @media (min-width: 1025px) {
+          .horizontal-list {
+            justify-content: flex-start;
+          }
+          .horizontal-list > * {
+            flex: 0 0 calc(33.33% - 0.67rem);
+            min-width: calc(33.33% - 0.67rem);
+          }
         }
 
-        @media (max-width: 768px) {
-          .horizontal-item {
+        /* Tablet - 2 items */
+        @media (max-width: 1024px) and (min-width: 601px) {
+          .horizontal-list > * {
+            flex: 0 0 calc(50% - 0.5rem);
+            min-width: calc(50% - 0.5rem);
+          }
+        }
+
+        /* Mobile - 1 item */
+        @media (max-width: 600px) {
+          .horizontal-list > * {
             flex: 0 0 100%;
+            min-width: 100%;
           }
           .arrow-button {
             width: 10%;

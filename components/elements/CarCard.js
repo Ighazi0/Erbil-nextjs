@@ -1,12 +1,11 @@
 "use client";
 
 import { FormattedMessage } from "react-intl";
-
 import { useContext, useState } from "react";
 import { useRouter } from "next/navigation";
 import { LanguageContext } from "@/components/translation/translationLayout";
 
-export default function CarCard({ item }) {
+export default function CarCard({ item, offer = false }) {
   const { rate, code } = useContext(LanguageContext);
   const [imgError, setImgError] = useState(false);
   const router = useRouter();
@@ -21,38 +20,35 @@ export default function CarCard({ item }) {
   return (
     <div
       key={item.id}
-      className="listing-grid-item cursor-pointer"
+      className="listing-grid-item cursor-pointer relative"
       onClick={handleCardClick}
     >
-      <div className="listing-item-image">
-        <div className="hover-listing-image">
-          <div className="wrap-hover-listing">
-            <div className="listing-item active">
-              <div className="images">
-                <img
-                  src={imgSrc}
-                  className="swiper-image tfcl-light-gallery"
-                  alt="car"
-                  onError={() => setImgError(true)}
-                  style={
-                    imgSrc === placeholderImage
-                      ? {
-                          display: "block",
-                          margin: "0 auto",
-                          maxWidth: "175px",
-                          maxHeight: "175px",
-                          objectFit: "contain",
-                        }
-                      : {}
-                  }
-                />
-              </div>
-            </div>
-            <div className="bullet-hover-listing">
-              <div className="bl-item active" />
-            </div>
-          </div>
+      {offer && (
+        <div
+          className="absolute top-2 right-2 text-white text-xs font-bold px-5 py-1 pr-2 rounded-md z-10 text-end"
+          style={{
+            backgroundColor: "#ff0000",
+            transform: "rotate(5deg)",
+            boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
+          }}
+        >
+          HOT OFFER
         </div>
+      )}
+
+      <div className="images">
+        <img
+          src={imgSrc}
+          className="swiper-image tfcl-light-gallery"
+          alt="car"
+          onError={() => setImgError(true)}
+          style={{
+            display: "block",
+            margin: "0 auto",
+            height: "180px",
+            objectFit: "contain",
+          }}
+        />
       </div>
 
       <div className="listing-item-content">
@@ -87,7 +83,48 @@ export default function CarCard({ item }) {
           </div>
         </div>
 
-        <div className="bottom-price-wrap py-3">
+        {offer && (
+          <div className="offer-texts px-0 pt-2">
+            <div
+              className="flex items-center text-sm mb-1"
+              style={{ color: "#000000" }}
+            >
+              <span className="mr-2" style={{ color: "#22C55E" }}>
+                ✓
+              </span>
+              Free kilometer
+            </div>
+            <div
+              className="flex items-center text-xs mb-1"
+              style={{ color: "#000000" }}
+            >
+              <span className="mr-2" style={{ color: "#22C55E" }}>
+                ✓
+              </span>
+              Free drop off anywhere in Dubai
+            </div>
+            <div
+              className="flex items-center text-xs mb-1"
+              style={{ color: "#000000" }}
+            >
+              <span className="mr-2" style={{ color: "#22C55E" }}>
+                ✓
+              </span>
+              Baby seat available
+            </div>
+            <div
+              className="flex items-center text-xs"
+              style={{ color: "#000000" }}
+            >
+              <span className="mr-2" style={{ color: "#22C55E" }}>
+                ✓
+              </span>
+              No deposit available
+            </div>
+          </div>
+        )}
+
+        <div className="bottom-price-wrap pb-3">
           <div className="price-wrap">
             <p className="price-sale">
               {(item.price * rate).toFixed(1)} {code}
@@ -108,8 +145,8 @@ export default function CarCard({ item }) {
               textAlign: "center",
               padding: "10px 16px",
               borderRadius: "8px",
-              width: "100px",
-              height: "40px",
+              width: "100%",
+              height: "30px",
               textDecoration: "none",
               marginTop: "0px",
             }}
@@ -119,23 +156,31 @@ export default function CarCard({ item }) {
           <a
             href={`tel:+971557754102`}
             onClick={(e) => e.stopPropagation()}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="button-save-listing text-white d-flex align-items-center justify-content-center"
             style={{
               backgroundColor: "#A88E70",
               textAlign: "center",
               padding: "10px 16px",
               borderRadius: "8px",
-              width: "100px",
-              height: "40px",
+              width: "100%",
+              height: "30px",
               textDecoration: "none",
               marginTop: "0px",
             }}
-            className="flex-1 flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-xl shadow-md transition-all duration-200"
           >
-            <i className="icon-phone text-lg" />
-            Call Now
+            <FormattedMessage id="Call now" defaultMessage="Call now" />
           </a>
         </div>
       </div>
+
+      <style jsx>{`
+        .listing-grid-item {
+          position: relative;
+          overflow: hidden;
+        }
+      `}</style>
     </div>
   );
 }
