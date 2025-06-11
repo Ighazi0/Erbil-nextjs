@@ -107,8 +107,8 @@ export default function Header1({ scroll, handleMobileMenu }) {
 
   const handleLogout = async () => {
     try {
+      handleMobileMenu();
       await Logout();
-      // Delete session
       await fetch("/api/auth/session", { method: "DELETE" });
       router.push("/login");
     } catch (error) {
@@ -319,15 +319,13 @@ export default function Header1({ scroll, handleMobileMenu }) {
                   </Link>
                 </div>
               ) : (
-                <div className="help-bar-mobie login-box pt-2">
-                  <button
-                    onClick={handleLogout}
-                    className="fw-7 category border-0 bg-transparent"
-                  >
-                    <i className="icon-logout ps-2" />
-                    <FormattedMessage id="logout" />
-                  </button>
-                </div>
+                <button
+                  onClick={handleLogout}
+                  className="dropdown-item text-danger pt-3 px-0"
+                >
+                  <i className="icon-logout me-2" />
+                  <FormattedMessage id="logout" />
+                </button>
               )}
             </div>
           </nav>

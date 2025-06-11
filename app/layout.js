@@ -46,8 +46,8 @@ export default function RootLayout({ children }) {
             right: 10,
             padding: 0,
             fontWeight: "bold",
-            width: "40px",
-            height: "150px",
+            width: "35px",
+            height: "135px",
             borderRadius: "5px 0px 0px 5px",
             fontSize: "25px",
             textAlign: "center",
@@ -68,7 +68,7 @@ export default function RootLayout({ children }) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <WhatsApp sx={{ color: "#fff", fontSize: 30 }} />
+            <WhatsApp sx={{ color: "#fff", fontSize: 20 }} />
           </a>
           <a
             href="tel:+971557754102"
@@ -81,7 +81,7 @@ export default function RootLayout({ children }) {
             }}
             className="phone-call-btn"
           >
-            <Phone sx={{ color: "#fff", fontSize: 30 }} />
+            <Phone sx={{ color: "#fff", fontSize: 20 }} />
           </a>
           <a
             href="https://maps.app.goo.gl/KEMiwajem3UxUQHK7"
@@ -97,7 +97,7 @@ export default function RootLayout({ children }) {
             }}
             title="Location"
           >
-            <LocationOn sx={{ color: "#fff", fontSize: 30 }} />
+            <LocationOn sx={{ color: "#fff", fontSize: 20 }} />
           </a>
         </div>
         <GoogleAnalytics gaId={"G-6B6G8HY79K"} />

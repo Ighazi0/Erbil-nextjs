@@ -1,6 +1,4 @@
 "use client";
-import { WhatsApp } from "@mui/icons-material";
-
 import Layout from "@/components/layout/Layout";
 import ThumbSlider from "@/components/slider/ThumbSlider";
 import Link from "next/link";
@@ -66,7 +64,6 @@ export default function ListingDetails({ params }) {
   return (
     <>
       <Layout headerStyle={1} footerStyle={1}>
-        {/* Breadcrumb */}
         <div className="widget-breakcrumb">
           <div className="themesflat-container">
             <div className="breakcrumb">
@@ -82,7 +79,6 @@ export default function ListingDetails({ params }) {
           </div>
         </div>
 
-        {/* Car Details */}
         <div className="widget-property-detail">
           <div className="themesflat-container">
             <div className="row">
@@ -133,7 +129,7 @@ export default function ListingDetails({ params }) {
                         }}
                         onClick={() => setShowRentModal(true)}
                       >
-                        <FormattedMessage id="Rent Now" />
+                        <FormattedMessage id="rent_now" />
                       </button>
                       <a
                         href={`https://wa.me/971557754102?text=${encodeURIComponent(
@@ -153,11 +149,7 @@ export default function ListingDetails({ params }) {
                           marginTop: "0px",
                         }}
                       >
-                        <WhatsApp sx={{ color: "#fff", fontSize: 24 }} />
-                        <FormattedMessage
-                          id="WhatsApp"
-                          defaultMessage="WhatsApp"
-                        />
+                        <FormattedMessage id="whatsApp" />
                       </a>
                     </div>
                   </div>
@@ -165,7 +157,6 @@ export default function ListingDetails({ params }) {
               </div>
             </div>
 
-            {/* Image Gallery */}
             <div className="row">
               <div className="col-lg-12">
                 <div className="gallary-property-details">
@@ -174,7 +165,6 @@ export default function ListingDetails({ params }) {
               </div>
             </div>
 
-            {/* Car Overview and Description */}
             <div className="row">
               <div className="col-md-10 col-12 mx-auto">
                 <div className="post-property">
@@ -187,7 +177,6 @@ export default function ListingDetails({ params }) {
                     </div>
                   )}
 
-                  {/* Features */}
                   <div className="wrap-car-feature wrap-style">
                     <h4 className="title">
                       <FormattedMessage id="Features" />
@@ -232,7 +221,6 @@ export default function ListingDetails({ params }) {
           </div>
         </div>
 
-        {/* Related Cars */}
         <div className="widget-related-single-listing">
           <div className="themesflat-container">
             <div className="listing-list-car-grid">

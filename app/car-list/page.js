@@ -158,7 +158,9 @@ export default function CarList() {
                       <input
                         type="search"
                         className="form-control"
-                        placeholder="Search here..."
+                        placeholder={intl.formatMessage({
+                          id: "search_here",
+                        })}
                         name="name"
                         onChange={handleFilter}
                       />

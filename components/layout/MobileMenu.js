@@ -1,11 +1,8 @@
 "use client";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { FormattedMessage } from "react-intl";
 
 export default function MobileMenu({ closeMenu }) {
-  const pathname = usePathname();
-
   const handleLinkClick = () => {
     closeMenu();
   };

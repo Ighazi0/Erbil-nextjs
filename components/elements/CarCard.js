@@ -32,7 +32,7 @@ export default function CarCard({ item, offer = false }) {
             boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
           }}
         >
-          HOT OFFER
+          <FormattedMessage id="hot_offer" />
         </div>
       )}
 
@@ -46,6 +46,7 @@ export default function CarCard({ item, offer = false }) {
             display: "block",
             margin: "0 auto",
             height: "180px",
+            width: !imgError && item.image ? null : "200px",
             objectFit: "contain",
           }}
         />
@@ -92,7 +93,7 @@ export default function CarCard({ item, offer = false }) {
               <span className="mr-2" style={{ color: "#22C55E" }}>
                 ✓
               </span>
-              Free kilometer
+              <FormattedMessage id="free_kilometer" />
             </div>
             <div
               className="flex items-center text-xs mb-1"
@@ -101,7 +102,7 @@ export default function CarCard({ item, offer = false }) {
               <span className="mr-2" style={{ color: "#22C55E" }}>
                 ✓
               </span>
-              Free drop off anywhere in Dubai
+              <FormattedMessage id="free_drop_off_anywhere_in_Dubai" />
             </div>
             <div
               className="flex items-center text-xs mb-1"
@@ -110,7 +111,7 @@ export default function CarCard({ item, offer = false }) {
               <span className="mr-2" style={{ color: "#22C55E" }}>
                 ✓
               </span>
-              Baby seat available
+              <FormattedMessage id="baby_seat_available" />
             </div>
             <div
               className="flex items-center text-xs"
@@ -119,7 +120,7 @@ export default function CarCard({ item, offer = false }) {
               <span className="mr-2" style={{ color: "#22C55E" }}>
                 ✓
               </span>
-              No deposit available
+              <FormattedMessage id="no_deposit_available" />
             </div>
           </div>
         )}
@@ -151,7 +152,7 @@ export default function CarCard({ item, offer = false }) {
               marginTop: "0px",
             }}
           >
-            <FormattedMessage id="WhatsApp" defaultMessage="WhatsApp" />
+            <FormattedMessage id="whatsApp" />
           </a>
           <a
             href={`tel:+971557754102`}
@@ -170,7 +171,7 @@ export default function CarCard({ item, offer = false }) {
               marginTop: "0px",
             }}
           >
-            <FormattedMessage id="Call now" defaultMessage="Call now" />
+            <FormattedMessage id="call_now" />
           </a>
         </div>
       </div>

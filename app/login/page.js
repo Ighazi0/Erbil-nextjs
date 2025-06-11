@@ -1,21 +1,31 @@
-'use client';
-import dynamic from 'next/dynamic';
+"use client";
+import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 import image from "@/public/assets/images/slide/car.png";
 import { FormattedMessage, useIntl } from "react-intl";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Login } from "@/services/authService";
-import { CircularProgress } from '@mui/material';
-import { SnackbarProvider, useSnackbarContext } from "@/contexts/SnackbarContext";
+import { CircularProgress } from "@mui/material";
+import {
+  SnackbarProvider,
+  useSnackbarContext,
+} from "@/contexts/SnackbarContext";
 
-// Dynamically import Layout with no SSR
 const Layout = dynamic(() => import("@/components/layout/Layout"), {
   ssr: false,
 });
 
-function LoginForm({ onSubmit, isLoading, formData, handleChange, showPassword, setShowPassword, isRTL }) {
+function LoginForm({
+  onSubmit,
+  isLoading,
+  formData,
+  handleChange,
+  showPassword,
+  setShowPassword,
+  isRTL,
+}) {
   const intl = useIntl();
 
   return (
@@ -40,11 +50,14 @@ function LoginForm({ onSubmit, isLoading, formData, handleChange, showPassword, 
         <label htmlFor="password">
           <FormattedMessage id="Password" />
         </label>
-        <div className="password-input-wrapper" style={{ position: "relative" }}>
+        <div
+          className="password-input-wrapper"
+          style={{ position: "relative" }}
+        >
           <input
             type={showPassword ? "text" : "password"}
             className="form-control"
-            placeholder={intl.formatMessage({ id: "Enter Password" })}
+            placeholder={intl.formatMessage({ id: "enter_password" })}
             id="password"
             name="password"
             value={formData.password}
@@ -54,7 +67,7 @@ function LoginForm({ onSubmit, isLoading, formData, handleChange, showPassword, 
           />
           <button
             type="button"
-            onClick={() => setShowPassword(prev => !prev)}
+            onClick={() => setShowPassword((prev) => !prev)}
             style={{
               position: "absolute",
               [!isRTL ? "right" : "left"]: "10px",
@@ -66,7 +79,7 @@ function LoginForm({ onSubmit, isLoading, formData, handleChange, showPassword, 
               cursor: "pointer",
               fontSize: "20px",
               color: "#6c757d",
-              width: 'fit-content'
+              width: "fit-content",
             }}
           >
             {showPassword ? <FaEyeSlash /> : <FaEye />}
@@ -102,16 +115,15 @@ function LoginContent() {
   const [isRTL, setIsRTL] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
-    email: '',
-    password: ''
+    email: "",
+    password: "",
   });
 
   const router = useRouter();
   const { showSnackbar } = useSnackbarContext();
   const intl = useIntl();
 
-  // Update RTL on mount and dir changes
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     const dir = document.documentElement.dir === "rtl";
     if (isRTL !== dir) {
       setIsRTL(dir);
@@ -120,28 +132,27 @@ function LoginContent() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value.trim()
+      [name]: value.trim(),
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     setIsLoading(true);
-    
+
     try {
-      const { user, role } = await Login(formData.email, formData.password);      
-      if (role === 'admin') {        
-        router.push('/admin');
+      const { role } = await Login(formData.email, formData.password);
+      if (role === "admin") {
+        router.push("/admin");
       } else {
-        router.push('/');
+        router.push("/");
       }
     } catch (error) {
-      console.log('6');
-      console.error('Login error:', error);
-      showSnackbar(error.message, 'error');
+      console.error("Login error:", error);
+      showSnackbar(error.message, "error");
     } finally {
       setIsLoading(false);
     }
@@ -151,7 +162,11 @@ function LoginContent() {
     <div className="register loginIn">
       <div className="d-lg-flex half">
         <div className="bg order-1 order-md-2 d-flex justify-content-center align-items-center">
-            <img src={image.src} alt="" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+          <img
+            src={image.src}
+            alt=""
+            style={{ width: "100%", height: "100%", objectFit: "contain" }}
+          />
         </div>
         <div className="contents order-2 order-md-1">
           <div className="container">

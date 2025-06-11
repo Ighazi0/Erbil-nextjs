@@ -143,7 +143,7 @@ export default function Footer1() {
           <div className="row footer-bottom">
             <div className="col-12 text-center">
               <p className="coppy-right">
-                <FormattedMessage id="All Rights Reserved to Erbil Co.LTD © 2024." />
+                <FormattedMessage id="all_rights" />
               </p>
             </div>
           </div>
