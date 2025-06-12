@@ -505,6 +505,8 @@
   "days":"days",
   "cancel": "Cancel",
   "confirm_rental":"Confirm Rental",
-  "total_amount":"Total Amount"
+  "total_amount":"Total Amount",
+  "load_more":"Load more"
+
 
 }

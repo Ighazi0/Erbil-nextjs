@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import { getCars } from "@/utils/cars";
 import { LanguageContext } from "../translation/translationLayout";
 import CardCard from "@/components/elements/CarCard";
+import { FormattedMessage } from "react-intl";
 
 export default function PopularMakesTab1() {
   const [listing, setListing] = useState([]);
@@ -13,12 +14,12 @@ export default function PopularMakesTab1() {
   const { numberOfDays } = useContext(LanguageContext);
 
   const fetchData = async (isNext = false) => {
-    if (loading || isLastPage) return;
+    if (loading || (isNext && isLastPage)) return;
 
     setLoading(true);
     const cars = await getCars(
       "",
-      6,
+      9,
       "",
       "",
       numberOfDays,
@@ -38,7 +39,7 @@ export default function PopularMakesTab1() {
       setLastDoc(cars[cars.length - 1].createdAt);
     }
 
-    if (cars.length < 3) {
+    if (cars.length < 6) {
       setIsLastPage(true);
     }
 
@@ -47,40 +48,38 @@ export default function PopularMakesTab1() {
 
   useEffect(() => {
     fetchData(false);
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const nearBottom =
-        window.innerHeight + window.scrollY >= document.body.offsetHeight - 600;
-      if (nearBottom && !loading && !isLastPage) {
-        fetchData(true);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [loading, isLastPage, lastDoc]);
+  }, [numberOfDays]);
 
   return (
     <>
       <div className="tab-content" id="pills-tabContent-v2">
         <div className="tab-pane fade show active">
           <div className="car-list-item">
-            {listing.map((car) => {
-              return <CardCard key={car.id} item={car} />;
-            })}
+            {listing.map((car) => (
+              <CardCard key={car.id} item={car} />
+            ))}
           </div>
         </div>
       </div>
 
-      {loading && (
-        <div style={{ textAlign: "center", padding: "20px" }}>
+      <div style={{ textAlign: "center", marginTop: "20px" }}>
+        {loading && (
           <div className="spinner-border text-primary" role="status">
             <span className="visually-hidden">Loading...</span>
           </div>
-        </div>
-      )}
+        )}
+
+        {!isLastPage && !loading && (
+          <div style={{ textAlign: "center", marginTop: "20px" }}>
+            <button
+              className="btn btn-primary btn-sm w-auto"
+              onClick={() => fetchData(true)}
+            >
+              <FormattedMessage id="load_more" />
+            </button>
+          </div>
+        )}
+      </div>
     </>
   );
 }

@@ -1657,9 +1657,9 @@ screen and (max-height:300px) {
 }
 /*--------- Abstracts variable ---------- */
 :root {
-  --font-main-family: Geldwine, sans-serif;
-  --font-title-family: Geldwine, sans-serif;
-  --font-btn-family: Geldwine, sans-serif;
+  --font-main-family: Aeonik, sans-serif;
+  --font-title-family: Aeonik, sans-serif;
+  --font-btn-family: Aeonik, sans-serif;
 }
 
 /*---------- Reset css styles ----------- */

@@ -505,6 +505,8 @@
   "days": "أيام",
   "cancel": "إلغاء",
   "confirm_rental": "تأكيد الإيجار",
-  "total_amount":"المبلغ الإجمالي"
+  "total_amount":"المبلغ الإجمالي",
+  "load_more":"أظهر المزيد"
+
 
 }

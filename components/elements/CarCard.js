@@ -53,36 +53,38 @@ export default function CarCard({ item, offer = false }) {
       </div>
 
       <div className="listing-item-content">
-        <div className="listing-top-content">
-          <h6 className="title">
-            <span>{item.title}</span>
-          </h6>
-          <div className="description">
-            <ul>
-              <li className="listing-information fuel">
-                <i className="icon-gasoline-pump-1" />
-                <div className="inner">
-                  <span>Fuel type</span>
-                  <p>{item.fuelType}</p>
-                </div>
-              </li>
-              <li className="listing-information size-engine">
-                <i className="icon-Group1" />
-                <div className="inner">
-                  <span>Mileage</span>
-                  <p>{item.mileage}</p>
-                </div>
-              </li>
-              <li className="listing-information transmission">
-                <i className="icon-gearbox-1" />
-                <div className="inner">
-                  <span>Transmission</span>
-                  <p>{item.transmission}</p>
-                </div>
-              </li>
-            </ul>
+        {!offer && (
+          <div className="listing-top-content">
+            <h6 className="title">
+              <span>{item.title}</span>
+            </h6>
+            <div className="description">
+              <ul>
+                <li className="listing-information fuel">
+                  <i className="icon-gasoline-pump-1" />
+                  <div className="inner">
+                    <span>Fuel type</span>
+                    <p>{item.fuelType}</p>
+                  </div>
+                </li>
+                <li className="listing-information size-engine">
+                  <i className="icon-Group1" />
+                  <div className="inner">
+                    <span>Mileage</span>
+                    <p>{item.mileage}</p>
+                  </div>
+                </li>
+                <li className="listing-information transmission">
+                  <i className="icon-gearbox-1" />
+                  <div className="inner">
+                    <span>Transmission</span>
+                    <p>{item.transmission}</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
+        )}
 
         {offer && (
           <div className="offer-texts px-0 pt-2">

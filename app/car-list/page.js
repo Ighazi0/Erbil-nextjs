@@ -140,10 +140,7 @@ export default function CarList() {
               <div className="search-filter-listing-car">
                 <div className="filter-header-list">
                   <h6 className="title-filter">
-                    <FormattedMessage
-                      id="searchByFilter"
-                      defaultMessage="Search by Filter"
-                    />
+                    <FormattedMessage id="searchByFilter" />
                   </h6>
                   <div className="btn-filter">
                     <i className="icon-Grid-view" onClick={handleToggle} />
@@ -202,10 +199,7 @@ export default function CarList() {
                         onChange={handleFilter}
                       >
                         <option value="">
-                          <FormattedMessage
-                            id="selectType"
-                            defaultMessage="Select Type"
-                          />
+                          <FormattedMessage id="selectType" />
                         </option>
                         {types.map((type) => (
                           <option key={type.id} value={type.id}>
@@ -257,7 +251,6 @@ export default function CarList() {
                     )}
                   </div>
 
-                  {/* Bottom loader for pagination */}
                   {loading && lastDoc && (
                     <div style={{ textAlign: "center", padding: "20px" }}>
                       <div

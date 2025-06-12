@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import { db } from "../../app/firebase";
 import { collection, getDocs, query, limit, where } from "firebase/firestore";
@@ -8,12 +9,19 @@ export default function SlideFormV2() {
   const [cars, setCars] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(3);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [dragDistance, setDragDistance] = useState(0);
+
+  const minDragDistance = 50;
 
   const getCars = async () => {
-    let q = query(collection(db, "cars"), where("offer", "==", true), limit(9));
-
+    const q = query(
+      collection(db, "cars"),
+      where("offer", "==", true),
+      limit(9)
+    );
     const querySnapshot = await getDocs(q);
-
     const docs = querySnapshot.docs.map((car) => ({
       id: car.id,
       image: car.data().images?.[0] || "",
@@ -30,20 +38,15 @@ export default function SlideFormV2() {
 
   useEffect(() => {
     const updateItemsPerPage = () => {
-      if (window.innerWidth <= 600) {
-        setItemsPerPage(1);
-      } else if (window.innerWidth <= 1024) {
-        setItemsPerPage(2);
-      } else {
-        setItemsPerPage(3);
-      }
+      if (window.innerWidth <= 600) setItemsPerPage(1);
+      else if (window.innerWidth <= 1024) setItemsPerPage(2);
+      else setItemsPerPage(3);
+
       setCurrentPage(0);
     };
 
     updateItemsPerPage();
-
     window.addEventListener("resize", updateItemsPerPage);
-
     return () => window.removeEventListener("resize", updateItemsPerPage);
   }, []);
 
@@ -53,53 +56,86 @@ export default function SlideFormV2() {
     currentPage * itemsPerPage + itemsPerPage
   );
 
+  const onMouseDown = (e) => {
+    setIsDragging(true);
+    setStartX(e.clientX);
+    setDragDistance(0);
+    e.preventDefault();
+  };
+
+  const onMouseMove = (e) => {
+    if (!isDragging) return;
+    setDragDistance(startX - e.clientX);
+  };
+
+  const onMouseUp = () => {
+    if (!isDragging) return;
+    setIsDragging(false);
+
+    if (Math.abs(dragDistance) > minDragDistance) {
+      if (dragDistance > 0) {
+        setCurrentPage((prev) => (prev === totalPages - 1 ? 0 : prev + 1));
+      } else {
+        setCurrentPage((prev) => (prev === 0 ? totalPages - 1 : prev - 1));
+      }
+    }
+  };
+
+  const onMouseLeave = () => {
+    if (isDragging) setIsDragging(false);
+  };
+
   return (
     <>
-      <div className="tf-slide-form-v2">
-        <div className="slide-form-v2">
-          <div className="slide-form-item">
-            <div className="slide-image">
-              <img src="/assets/images/slide/Website2.jpg" alt="" />
-              <div className="overlay" />
-            </div>
-            <div className="themesflat-container">
-              <div className="slider-wrap">
-                <div className="horizontal-list-wrapper">
-                  <button
-                    onClick={() =>
-                      setCurrentPage((prev) => Math.max(prev - 1, 0))
-                    }
-                    disabled={currentPage === 0}
-                    className="arrow-button"
-                  >
-                    ←
-                  </button>
+      <div className="slide-form-item">
+        <div className="themesflat-container">
+          <div className="slider-wrap">
+            <div
+              className="horizontal-list-wrapper"
+              onMouseDown={onMouseDown}
+              onMouseMove={onMouseMove}
+              onMouseUp={onMouseUp}
+              onMouseLeave={onMouseLeave}
+            >
+              <button
+                onClick={() =>
+                  setCurrentPage((prev) =>
+                    prev === 0 ? totalPages - 1 : prev - 1
+                  )
+                }
+                className="arrow-button"
+              >
+                ←
+              </button>
 
-                  <div className="horizontal-list">
-                    {carsList.map((car) => (
-                      <CardCard key={car.id} item={car} offer={true} />
-                    ))}
-                  </div>
-
-                  <button
-                    onClick={() =>
-                      setCurrentPage((prev) =>
-                        Math.min(prev + 1, totalPages - 1)
-                      )
-                    }
-                    disabled={currentPage >= totalPages - 1}
-                    className="arrow-button"
-                  >
-                    →
-                  </button>
-                </div>
+              <div className="horizontal-list">
+                {carsList.map((car) => (
+                  <CardCard key={car.id} item={car} offer={true} />
+                ))}
               </div>
+
+              <button
+                onClick={() =>
+                  setCurrentPage((prev) =>
+                    prev === totalPages - 1 ? 0 : prev + 1
+                  )
+                }
+                className="arrow-button"
+              >
+                →
+              </button>
             </div>
           </div>
         </div>
       </div>
 
       <style jsx global>{`
+        .slide-form-v2 {
+          background-color: #f9f6f1; /* Light warm beige background */
+          padding: 2rem 0;
+          border-radius: 10px;
+        }
+
         .horizontal-list-wrapper {
           display: flex;
           align-items: center;
@@ -107,6 +143,12 @@ export default function SlideFormV2() {
           margin-top: 2rem;
           gap: 1rem;
           width: 100%;
+          user-select: none;
+          cursor: grab;
+        }
+
+        .horizontal-list-wrapper:active {
+          cursor: grabbing;
         }
 
         .arrow-button {
@@ -116,8 +158,13 @@ export default function SlideFormV2() {
           padding: 0.3rem 0.6rem;
           font-size: 0.8rem;
           border-radius: 0.25rem;
-          width: 5%;
+          width: 40px;
           cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+
+        .arrow-button:hover {
+          background-color: #8a7052;
         }
 
         .arrow-button:disabled {
