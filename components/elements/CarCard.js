@@ -53,11 +53,11 @@ export default function CarCard({ item, offer = false }) {
       </div>
 
       <div className="listing-item-content">
+        <h6 className="title">
+          <span>{item.title}</span>
+        </h6>
         {!offer && (
           <div className="listing-top-content">
-            <h6 className="title">
-              <span>{item.title}</span>
-            </h6>
             <div className="description">
               <ul>
                 <li className="listing-information fuel">

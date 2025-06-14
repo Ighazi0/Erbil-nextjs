@@ -22,8 +22,8 @@ const dm = DM_Sans({
 });
 
 export const metadata = {
-  title: "Erbil",
-  description: "Erbil Cars",
+  title: "Erbil Car Rental",
+  description: "Erbil Car Rental in UAE",
 };
 
 export default function RootLayout({ children }) {
@@ -32,6 +32,10 @@ export default function RootLayout({ children }) {
       <head>
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
+        <meta name="application-name" content={metadata.title} />
+        <meta property="og:site_name" content={metadata.title} />
+        <meta property="og:title" content={metadata.title} />
+        <meta property="og:description" content={metadata.description} />
       </head>
       <body className={`body counter-scroll`}>
         <AuthProvider>
