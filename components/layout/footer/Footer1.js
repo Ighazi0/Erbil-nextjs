@@ -120,6 +120,18 @@ export default function Footer1() {
                       +964 750 445 7705
                     </p>
                   </li>
+                  <li>
+                    <p
+                      className=" text-white w-100 max-w-100 text-wrap fs-6"
+                      style={{
+                        overflowWrap: "break-word",
+                        wordWrap: "break-word",
+                        wordBreak: "break-word",
+                      }}
+                    >
+                      info@erbilcarrental.net
+                    </p>
+                  </li>
                   <li className="d-flex align-items-center">
                     <Link href="https://maps.app.goo.gl/dkW7BCjLpTAMzGfa9?g_st=com.google.maps.preview.copy">
                       <p

@@ -174,6 +174,7 @@ export default function Header1({ scroll, handleMobileMenu }) {
                         >
                           {codes.map((e) => (
                             <li
+                              key={e.code}
                               className="dropdown-item d-flex align-items-center cursor-pointer"
                               role="button"
                               onClick={() => handleCodeChange(e.code, e.rate)}

@@ -506,7 +506,13 @@
   "cancel": "إلغاء",
   "confirm_rental": "تأكيد الإيجار",
   "total_amount":"المبلغ الإجمالي",
-  "load_more":"أظهر المزيد"
-
-
+  "load_more":"أظهر المزيد",
+  "erbil_car_rental_special_offers":"عروض خاصة لتأجير السيارات في أربيل",
+  "spend_less_&_hire_best":"انفق أقل واستأجر الأفضل",
+"no_hidden_costs": "لا توجد تكاليف مخفية",
+  "simple_and_transparent_pricing": "تسعير بسيط وشفاف",
+  "free_cancellation": "إلغاء مجاني",
+  "free_cancellation_up_to_24_hours": "إلغاء مجاني حتى 24 ساعة",
+  "24_7_customer_care": "دعم العملاء 24/7",
+  "we_are_just_a_phone_call_away": "نحن على بُعد مكالمة هاتفية فقط"
 }

@@ -510,8 +510,13 @@
   "cancel": "هەڵوەشاندنەوە",
   "confirm_rental": "دووپاتکردنەوەی کرێ",
   "total_amount":"کۆی گشتی بڕ",
-  "load_more":"أظهر المزيد"
-
-
-
+  "load_more":"زیاتر بار بکە",
+  "erbil_car_rental_special_offers":"ئۆفەری تایبەت بۆ کرێی ئۆتۆمبێل لە هەولێر",
+  "spend_less_&_hire_best":"کەمتر خەرج بکە و باشترین بەکرێ بگرە",
+  "no_hidden_costs": "بێ هیچ خەرجیەکی شاراوە",
+  "simple_and_transparent_pricing": "نرخی سادە و ڕوون",
+  "free_cancellation": "هەڵوەشاندنەوەی بەخۆرایی",
+  "free_cancellation_up_to_24_hours": "هەڵوەشاندنەوەی بەخۆرایی تا ٢٤ کاتژمێر",
+  "24_7_customer_care": "چاودێری کڕیار ٢٤/٧",
+  "we_are_just_a_phone_call_away": "تەنها پەیوەندیەکی تەلەفۆنی دوورین"
 }

@@ -506,7 +506,13 @@
   "cancel": "Cancel",
   "confirm_rental":"Confirm Rental",
   "total_amount":"Total Amount",
-  "load_more":"Load more"
-
-
+  "load_more":"Load more",
+  "erbil_car_rental_special_offers":"Erbil Car Rental Special Offers",
+  "spend_less_&_hire_best":"Spend Less & Hire Best",
+  "no_hidden_costs": "No Hidden Costs",
+  "simple_and_transparent_pricing": "Simple and transparent pricing",
+  "free_cancellation": "Free Cancellation",
+  "free_cancellation_up_to_24_hours": "Free Cancellation up to 24 hours",
+  "24_7_customer_care": "24/7 Customer Care",
+  "we_are_just_a_phone_call_away": "We are just a phone call away"
 }

@@ -1,4 +1,5 @@
 "use client";
+import { FormattedMessage } from "react-intl";
 
 import { useEffect, useState } from "react";
 import { db } from "../../app/firebase";
@@ -87,7 +88,16 @@ export default function SlideFormV2() {
 
   return (
     <>
-      <div className="slide-form-item">
+      <div className="slide-form-item pt-20">
+        <span className="title-text">
+          {" "}
+          <FormattedMessage id="erbil_car_rental_special_offers" />
+        </span>
+        <span className="subtitle-text">
+          {" "}
+          <FormattedMessage id="spend_less_&_hire_best" />
+        </span>
+
         <div className="themesflat-container">
           <div className="slider-wrap">
             <div
@@ -131,9 +141,29 @@ export default function SlideFormV2() {
 
       <style jsx global>{`
         .slide-form-v2 {
-          background-color: #f9f6f1; /* Light warm beige background */
+          background-color: #f9f6f1;
           padding: 2rem 0;
           border-radius: 10px;
+        }
+
+        .title-text,
+        .subtitle-text {
+          display: block;
+          width: 100%;
+          text-align: center;
+          font-weight: 500;
+        }
+
+        .title-text {
+          font-size: 2rem;
+          color: #1f2937;
+          font-weight: 700;
+        }
+
+        .subtitle-text {
+          font-size: 1rem;
+          color: #6b7280;
+          margin-top: 0.25rem;
         }
 
         .horizontal-list-wrapper {
@@ -181,7 +211,6 @@ export default function SlideFormV2() {
           justify-content: center;
         }
 
-        /* Desktop - 3 items */
         @media (min-width: 1025px) {
           .horizontal-list {
             justify-content: flex-start;
@@ -192,7 +221,6 @@ export default function SlideFormV2() {
           }
         }
 
-        /* Tablet - 2 items */
         @media (max-width: 1024px) and (min-width: 601px) {
           .horizontal-list > * {
             flex: 0 0 calc(50% - 0.5rem);
@@ -200,7 +228,6 @@ export default function SlideFormV2() {
           }
         }
 
-        /* Mobile - 1 item */
         @media (max-width: 600px) {
           .horizontal-list > * {
             flex: 0 0 100%;

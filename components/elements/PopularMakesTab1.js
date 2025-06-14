@@ -52,16 +52,19 @@ export default function PopularMakesTab1() {
 
   return (
     <>
-      <div className="tab-content" id="pills-tabContent-v2">
-        <div className="tab-pane fade show active">
-          <div className="car-list-item">
-            {listing.map((car) => (
-              <CardCard key={car.id} item={car} />
-            ))}
+      <div className="themesflat-container">
+        <div className="populer-makes">
+          <div className="tab-content" id="pills-tabContent-v2 ">
+            <div className="tab-pane fade show active">
+              <div className="car-list-item">
+                {listing.map((car) => (
+                  <CardCard key={car.id} item={car} />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
       <div style={{ textAlign: "center", marginTop: "20px" }}>
         {loading && (
           <div className="spinner-border text-primary" role="status">
