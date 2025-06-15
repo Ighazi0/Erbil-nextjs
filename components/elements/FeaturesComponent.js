@@ -30,13 +30,11 @@ const FeaturesSection = () => {
           marginBottom: "20px",
         }}
       >
-        <span
-          role="img"
-          aria-label="money"
-          style={{ fontSize: "50px", marginRight: "20px" }}
-        >
-          💰
-        </span>
+        <img
+          src="/assets/images/logo/money.png"
+          style={{ height: "50px", width: "50px", marginRight: "20px" }}
+        />
+
         <div>
           <h3 style={{ fontSize: "18px", color: "#333" }}>
             {" "}
@@ -55,13 +53,10 @@ const FeaturesSection = () => {
           marginBottom: "20px",
         }}
       >
-        <span
-          role="img"
-          aria-label="calendar"
-          style={{ fontSize: "50px", marginRight: "20px" }}
-        >
-          📅
-        </span>
+        <img
+          src="/assets/images/logo/calender.png"
+          style={{ height: "50px", width: "50px", marginRight: "20px" }}
+        />
         <div>
           <h3 style={{ fontSize: "18px", color: "#333" }}>
             {" "}
@@ -80,13 +75,10 @@ const FeaturesSection = () => {
           marginBottom: "20px",
         }}
       >
-        <span
-          role="img"
-          aria-label="customer-service"
-          style={{ fontSize: "50px", marginRight: "20px" }}
-        >
-          📞
-        </span>
+        <img
+          src="/assets/images/logo/support.png"
+          style={{ height: "50px", width: "50px", marginRight: "20px" }}
+        />
         <div>
           <h3 style={{ fontSize: "18px", color: "#333" }}>
             <FormattedMessage id="24_7_customer_care" />
