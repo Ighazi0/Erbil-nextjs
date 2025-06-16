@@ -26,12 +26,6 @@ export default function ListingDetails({ params }) {
       const carData = q.data();
       carData["id"] = q.id;
 
-      if (carData?.type) {
-        const typeSnapshot = await getDoc(carData.type);
-        if (typeSnapshot.exists()) {
-          carData["type"] = typeSnapshot.data().name_en || "";
-        }
-      }
       if (carData?.model) {
         const modelSnapshot = await getDoc(carData.model);
         if (modelSnapshot.exists()) {
