@@ -52,7 +52,7 @@ export default function PopularMakesTab1() {
 
   return (
     <>
-      <div className="themesflat-container">
+      <div className="themesflat-container pt-30">
         <div className="populer-makes">
           <div className="tab-content" id="pills-tabContent-v2 ">
             <div className="tab-pane fade show active">

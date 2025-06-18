@@ -1,4 +1,4 @@
-// File: /Users/gh0zi0/Desktop/Projects/GitHub/erbilcarrental.nextjs/app/layout.js
+// File: /Users/gh0zi0/Desktop/Projects/GitHub/Erbil-nextjs/app/layout.js
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

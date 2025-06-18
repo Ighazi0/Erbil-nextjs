@@ -7,17 +7,21 @@ import { collection, getDocs } from "firebase/firestore";
 export default function BannerSlider() {
   const [banners, setBanners] = useState([]);
   const [current, setCurrent] = useState(0);
+  const [loading, setLoading] = useState(true); // Add loading state
   const timeoutRef = useRef(null);
   const startXRef = useRef(0);
   const isDraggingRef = useRef(false);
 
   const fetchBanners = async () => {
     try {
+      setLoading(true); // Start loading
       const querySnapshot = await getDocs(collection(db, "banners"));
       const images = querySnapshot.docs.map((doc) => doc.data().image);
       setBanners(images);
     } catch (err) {
       console.error("Error fetching banners:", err);
+    } finally {
+      setLoading(false); // End loading
     }
   };
 
@@ -98,6 +102,15 @@ export default function BannerSlider() {
     isDraggingRef.current = false;
   };
 
+  // Skeleton Loader Component
+  const SkeletonLoader = () => (
+    <div className="slider-container" style={{ height: "300px" }}>
+      <div className="slide">
+        <div className="bg-gray-300 rounded-[15px] animate-pulse" />
+      </div>
+    </div>
+  );
+
   return (
     <>
       <div className="tf-slide-form-v2">
@@ -108,38 +121,42 @@ export default function BannerSlider() {
               <div className="overlay" />
             </div>
             <div className="themesflat-container">
-              <div
-                className="slider-container"
-                onTouchStart={onTouchStart}
-                onTouchMove={onTouchMove}
-                onTouchEnd={onTouchEnd}
-                onMouseDown={onMouseDown}
-                onMouseMove={onMouseMove}
-                onMouseUp={onMouseUp}
-                onMouseLeave={onMouseUp}
-              >
+              {loading ? (
+                <SkeletonLoader />
+              ) : (
                 <div
-                  className="slider-track"
-                  style={{ transform: `translateX(-${current * 100}%)` }}
+                  className="slider-container"
+                  onTouchStart={onTouchStart}
+                  onTouchMove={onTouchMove}
+                  onTouchEnd={onTouchEnd}
+                  onMouseDown={onMouseDown}
+                  onMouseMove={onMouseMove}
+                  onMouseUp={onMouseUp}
+                  onMouseLeave={onMouseUp}
                 >
-                  {banners.map((src, i) => (
-                    <div className="slide" key={i}>
-                      <img src={src} />
-                    </div>
-                  ))}
-                </div>
+                  <div
+                    className="slider-track"
+                    style={{ transform: `translateX(-${current * 100}%)` }}
+                  >
+                    {banners.map((src, i) => (
+                      <div className="slide" key={i}>
+                        <img src={src} alt={`Banner ${i + 1}`} />
+                      </div>
+                    ))}
+                  </div>
 
-                <div className="indicators">
-                  {banners.map((_, idx) => (
-                    <button
-                      key={idx}
-                      className={`dot ${current === idx ? "active" : ""}`}
-                      onClick={() => setCurrent(idx)}
-                      aria-label={`Go to slide ${idx + 1}`}
-                    />
-                  ))}
+                  <div className="indicators">
+                    {banners.map((_, idx) => (
+                      <button
+                        key={idx}
+                        className={`dot ${current === idx ? "active" : ""}`}
+                        onClick={() => setCurrent(idx)}
+                        aria-label={`Go to slide ${idx + 1}`}
+                      />
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
